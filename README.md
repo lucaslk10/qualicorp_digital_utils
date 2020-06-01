@@ -68,25 +68,25 @@ const handle404 = function (req, res, next) {
 ```
 ## validations
 Contém diversos objetos que contém funções para diversos tipos de validações:
-- dateValidations
--- isValidFormat(data) 
--- isValidRange(dataInicio, dataFim)
--- castToYYYYMMDD(data)
+1. dateValidations
+- isValidFormat(data) 
+- isValidRange(dataInicio, dataFim)
+- castToYYYYMMDD(data)
 
-- documentsValidations
--- cpfValidations
---- unformat(cpf)
---- isValid(unformatedCpf)
+2. documentsValidations
+- cpfValidations
+* unformat(cpf)
+* isValid(unformatedCpf)
 
-- emailValidations
--- isValid(value)
+3. emailValidations
+- isValid(value)
 
-- numberValidations
--- isNatural(value)
+4. numberValidations
+- isNatural(value)
 
-- passwordValidations
--- isValid(value)
+5. passwordValidations
+- isValid(value)
 
-- stringValidations
--- onlyLetters(value)
--- onlyNumbers(value)
+6. stringValidations
+- onlyLetters(value)
+- onlyNumbers(value)
