@@ -5,9 +5,10 @@
 const { setupEnvironment, responseStructs, AppError, middlewares, validations } = require("@qualicorp_digital/utils");
 ```
 ## setupEnviroment
-setupEnviroment é uma função comumente usada no ato de inicialização das APIs para atribuir as variáveis de ambiente de acordo com o arquivo .env correspondente ao ambiente da execução.
-Recomendável realizar a chamada da função setupEnviroment() antes das rotas.
-O parâmetro esperado é uma string com o path da pasta onde se encontram o(s) arquivo(s) de extensão env. Caso não seja passado nada será utilizado como padrão o diretório raiz do projeto.
+setupEnviroment é uma função comumente usada na inicialização das APIs para atribuir as variáveis de ambiente de acordo com o arquivo .env correspondente ao ambiente da execução.
+Recomendável realizar a chamada da função setupEnviroment() antes do import das rotas.
+O parâmetro esperado é uma string contendo o path da pasta onde se encontram o(s) arquivo(s) de extensão env. <br>
+Caso não seja passado nada será utilizado como padrão o diretório raiz do projeto.
 
 ###### exemplo de uso:
 ```js
@@ -18,7 +19,7 @@ setupEnviroment("./config");
 ```
 
 ## responseStructs
-Um objeto que detém as funções que padronizam as responses das APIs, são elas:
+Um objeto que detém funções que padronizam as responses das APIs, são elas:
 
 ```js
 responseSuccess(res, data, status = 200) {
@@ -54,7 +55,7 @@ Ao importa-lo você recebe uma instância da classe AppError. Utilizado para lan
 ```
 
 ## middlewares
-Um objeto que contém middlewares padrões no formato esperado pelo express.
+Um objeto que contém middlewares padrões no formato do express.
 
 ###### middlewares disponíveis:
 ```js
@@ -67,7 +68,7 @@ const handle404 = function (req, res, next) {
 };
 ```
 ## validations
-Contém diversos objetos que contém funções para diversos tipos de validações:<br>
+Contém diversos objetos que possuem funções para diversos gêneros de validações:<br>
 
 **1. dateValidations**
 - isValidFormat(data) 
