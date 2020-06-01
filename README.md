@@ -74,9 +74,9 @@ Contém diversos objetos que contém funções para diversos tipos de validaçõ
 - castToYYYYMMDD(data)
 
 2. documentsValidations
-- cpfValidations
-* unformat(cpf)
-* isValid(unformatedCpf)
+2.1 cpfValidations
+- unformat(cpf)
+- isValid(unformatedCpf)
 
 3. emailValidations
 - isValid(value)
