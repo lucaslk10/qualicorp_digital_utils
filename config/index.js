@@ -2,8 +2,8 @@ const { config } = require("dotenv");
 const { join } = require("path");
 const path = require("path");
 
-exports.setupEnvironment = function () {
-  global.configPath = path.resolve(__dirname);
+const setupEnvironment = function (dirname = process.cwd()) {
+  global.configPath = path.resolve(dirname);
   const env = process.env.NODE_ENV || "dev";
   const configPath = join(global.configPath, `.env.${env}`);
 
@@ -11,3 +11,5 @@ exports.setupEnvironment = function () {
     path: configPath
   });
 };
+
+module.exports = setupEnvironment;

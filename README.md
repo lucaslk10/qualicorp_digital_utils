@@ -14,7 +14,7 @@ Recomendável realizar a chamda da função setuopEnviroment() antes das rotas.
 const express = require("express");
 const app = express();
 const { setupEnviroment } = require("@qualicorp_digital/utils");
-setupEnviroment();
+setupEnviroment("./config");
 ```
 
 ### responseStructs
