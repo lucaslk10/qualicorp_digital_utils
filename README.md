@@ -88,10 +88,11 @@ const handle404 = function (req, res, next) {
 
 ###### Exemplo de uso:
 ```js
+const { middlewares } = require("@qualicorp_digital/utils");
 const express = require("express");
 const app = express();
 app.use(routes);
-app.use(handle404); // deve sempre estar após as rotas
+app.use(middlewares.handle404); // deve sempre estar após as rotas
 ```
 
 ## validations
