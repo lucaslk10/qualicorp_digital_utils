@@ -1,0 +1,16 @@
+{
+  "name": "@qualicorp_digital/utils",
+  "version": "1.0.0",
+  "description": "Qualicorp Digital funções úteis",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "qualicorp",
+    "qualicorp_digital"
+  ],
+  "author": "Guilherme S. Andrade (G2)",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
