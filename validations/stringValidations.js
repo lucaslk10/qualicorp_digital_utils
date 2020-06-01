@@ -1,4 +1,4 @@
-exports.stringValidation = {
+module.exports = {
   onlyLetters(value) {
     return value.match(/^[a-zA-Z]+$/)
   },
