@@ -1,4 +1,4 @@
-exports.cpfValidation = {
+const cpfValidation = {
   unformat(cpf) {
     return cpf.replace(/\-|\./g, "");
   },
@@ -44,3 +44,7 @@ exports.cpfValidation = {
     return true;
   }
 };
+
+module.exports = {
+  cpfValidation
+}
