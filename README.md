@@ -67,7 +67,8 @@ const handle404 = function (req, res, next) {
 };
 ```
 ## validations
-Contém diversos objetos que contém funções para diversos tipos de validações:
+Contém diversos objetos que contém funções para diversos tipos de validações:<br>
+
 **1. dateValidations**
 - isValidFormat(data) 
 - isValidRange(dataInicio, dataFim)
