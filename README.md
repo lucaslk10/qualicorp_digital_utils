@@ -21,6 +21,7 @@ setupEnviroment("./config");
 ## responseStructs
 Um objeto que detém funções que padronizam as responses das APIs, são elas:
 
+###### Formato da função:
 ```js
 responseSuccess(res, data, status = 200) {
   //res: é o objeto response do express.<br>
@@ -29,6 +30,7 @@ responseSuccess(res, data, status = 200) {
 }
 ```
 
+###### Formato da função:
 ```js
 responseError(res, error, status = 500) {
   //res: é o objeto response do express.<br>
@@ -37,16 +39,30 @@ responseError(res, error, status = 500) {
 }
 ```
 
+###### Formato da função:
 ```js
 getErrorMessage(error) {
   //error: é o objeto de erro obtido pelo try-catch. A função irá avaliar o objeto e retornará a mensagem da melhor forma para o client requisitante.
 }
 ```
 
+###### Exemplo de uso das 3 funções acima:
+```js
+app.get("/", (req, res) => {
+  try {
+    const dados = { message: "hello world" };
+    responseSuccess(res, dados)
+  } catch (error) {
+    const msg = getErrorMessage(error);
+    responseError(res, msg);
+  }  
+});
+```
+
 ## AppError
 Ao importa-lo você recebe uma instância da classe AppError. Utilizado para lançar exceções intencionais da aplicação, diferenciando-as das exceções inexperadas.
 
-###### Seu formato é:
+###### Formato do objeto:
 ```js
 {
   message; // string
@@ -58,6 +74,8 @@ Ao importa-lo você recebe uma instância da classe AppError. Utilizado para lan
 Um objeto que contém middlewares padrões no formato do express.
 
 ###### middlewares disponíveis:
+
+###### Formato da função:
 ```js
 const handle404 = function (req, res, next) {
   // req: request
@@ -67,6 +85,15 @@ const handle404 = function (req, res, next) {
   next();
 };
 ```
+
+###### Exemplo de uso:
+```js
+const express = require("express");
+const app = express();
+app.use(routes);
+app.use(handle404); // deve sempre estar após as rotas
+```
+
 ## validations
 Contém diversos objetos que possuem funções para diversos gêneros de validações:<br>
 
