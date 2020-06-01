@@ -22,11 +22,11 @@ setupEnviroment();
 Detém as funções que padronizam as responses das APIs, são elas:
 
 #### responseSuccess(res, data, status = 200)
-"res" é o objeto response do express.
-"data" é o resultado da API, sendo geralmente um objeto ou um array.
-"status" statusCode da response. Se não for atribuído assumirá 200 (sucesso).
+"res" é o objeto response do express.<br>
+"data" é o resultado da API, sendo geralmente um objeto ou um array.<br>
+"status" statusCode da response. Se não for atribuído assumirá 200 (sucesso).<br>
 
 #### responseError(res, error, status = 500)
-"res" é o objeto response do express.
-"error" é o objeto de erro externado pelo trow. Geralmente será uma string com o erro ou um objeto contendo a propriedade message.
-"status" statusCode da response. Se não for atribuído assumirá 500 (erro interno).
+"res" é o objeto response do express.<br>
+"error" é o objeto de erro externado pelo trow. Geralmente será uma string com o erro ou um objeto contendo a propriedade message.<br>
+"status" statusCode da response. Se não for atribuído assumirá 500 (erro interno).<br>

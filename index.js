@@ -1,13 +1,13 @@
 const setupEnvironment = require("./config");
 const responseStructs = require("./responseStructs");
 const AppError = require("./AppError");
-const handle404 = require("./handle404");
+const middlewares = require("./middlewares");
 const validations = require("./validations");
 
 module.exports = {
-  setupEnvironment,
-  responseStructs,
-  AppError,
-  handle404,
-  validations
+  setupEnvironment: setupEnvironment,
+  responseStructs: responseStructs,
+  AppError: AppError,
+  middlewares: middlewares,
+  validations: validations
 }
