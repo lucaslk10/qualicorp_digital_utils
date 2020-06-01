@@ -2,7 +2,7 @@
 
 ###### exemplo de uso:
 ```js
-const { setupEnvironment, responseStructs, AppError, handle404, validations } = require("@qualicorp_digital/utils");
+const { setupEnvironment, responseStructs, AppError, middlewares, validations } = require("@qualicorp_digital/utils");
 ```
 ### setupEnviroment
 
