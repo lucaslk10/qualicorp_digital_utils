@@ -1,9 +1,9 @@
-const hashsValidations = require("./documentsValidations");
-const inputValidations = require("./inputValidations");
-const dateValidations = require("./dateValidations");
+const hashsConversions = require("./documentsConversions");
+const inputConversions = require("./inputConversions");
+const dateConversions = require("./dateConversions");
 
 module.exports = {
-  hashsValidations: hashsValidations,
-  inputValidations: inputValidations,
-  dateValidations: dateValidations
+  hashs: hashsConversions,
+  inputs: inputConversions,
+  date: dateConversions
 }

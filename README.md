@@ -2,7 +2,7 @@
 
 ###### exemplo de uso:
 ```js
-const { setupEnvironment, responseStructs, AppError, middlewares, validations } = require("@qualicorp_digital/utils");
+const { setupEnvironment, responseStructs, AppError, middlewares, validations, conversions } = require("@qualicorp_digital/utils");
 ```
 ## setupEnviroment
 setupEnviroment é uma função comumente usada na inicialização das APIs para atribuir as variáveis de ambiente de acordo com o arquivo .env correspondente ao ambiente da execução.
@@ -120,3 +120,18 @@ Contém diversos objetos que possuem funções para diversos gêneros de valida�
 **6. stringValidations**
 - onlyLetters(value)
 - onlyNumbers(value)
+
+## conversions
+Contém diversos objetos que possuem funções para diversos gêneros de conversões:<br>
+
+**1. date**
+- formatBrasil(data) 
+
+**2. inputs**<br>
+**2.1 query**
+- parse(value)
+
+**3. hashs**
+**3.1 base64 **(value)
+- decode(base64Value)
+- encode(value);
