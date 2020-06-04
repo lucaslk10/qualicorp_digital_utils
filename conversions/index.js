@@ -1,4 +1,4 @@
-const hashsConversions = require("./documentsConversions");
+const hashsConversions = require("./hashsConversions");
 const inputConversions = require("./inputConversions");
 const dateConversions = require("./dateConversions");
 
