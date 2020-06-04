@@ -3,7 +3,9 @@
   "version": "1.1.2",
   "description": "Qualicorp Digital funções úteis",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "publish": "publish --access public"
+  },
   "keywords": [
     "qualicorp",
     "qualicorp_digital"
