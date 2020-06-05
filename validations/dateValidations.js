@@ -4,11 +4,5 @@ module.exports = {
   },
   isValidRange(dataInicio, dataFim) {
     return parseInt(dataFim) > parseInt(dataInicio);
-  },
-  castToYYYYMMDD(data) {
-    return data
-      .split("/")
-      .reverse()
-      .join("");
   }
 };
