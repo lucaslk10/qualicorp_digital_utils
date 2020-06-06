@@ -1,5 +1,8 @@
 const base64 = {
   async encode(value) {
+    if (typeof value === "object")
+      value = JSON.stringify(value);
+
     const buff = new Buffer(value);
     return buff.toString("base64");
   },

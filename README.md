@@ -101,7 +101,6 @@ Contém diversos objetos que possuem funções para diversos gêneros de valida�
 **1. dateValidations**
 - isValidFormat(data) 
 - isValidRange(dataInicio, dataFim)
-- castToYYYYMMDD(data)
 
 **2. documentsValidations**<br>
 **2.1 cpfValidations**
@@ -125,13 +124,20 @@ Contém diversos objetos que possuem funções para diversos gêneros de valida�
 Contém diversos objetos que possuem funções para diversos gêneros de conversões:<br>
 
 **1. date**
-- formatBrasil(data) 
+- formatBrasil(data)
+- clear(data, separator = "/")
+- reverse(data, separator = "/")
+- clearAndReverse(data, separator = "/")
 
 **2. inputs**<br>
 **2.1 query**
 - parse(value)
 
 **3. hashs**
-**3.1 base64 **(value)
+**3.1 base64**
 - decode(base64Value)
 - encode(value);
+
+**4. number**
+- round(decimalValue, places = 2)
+- trunc(decimalValue, places = 2)
