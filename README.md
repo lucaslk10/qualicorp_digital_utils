@@ -2,7 +2,7 @@
 
 ###### exemplo de uso:
 ```js
-const { setupEnvironment, responseStructs, AppError, middlewares, validations, conversions } = require("@qualicorp_digital/utils");
+const { setupEnvironment, responseStructs, AppError, AuthError, middlewares, validations, conversions } = require("@qualicorp_digital/utils");
 ```
 ## setupEnviroment
 setupEnviroment é uma função comumente usada na inicialização das APIs para atribuir as variáveis de ambiente de acordo com o arquivo .env correspondente ao ambiente da execução.
@@ -70,6 +70,17 @@ Ao importa-lo você recebe uma instância da classe AppError. Utilizado para lan
 }
 ```
 
+## AuthError
+Ao importa-lo você recebe uma instância da classe AuthError. Utilizado para lançar exceções ocasionadas durante a autenticação.
+
+###### Formato do objeto:
+```js
+{
+  message; // string
+  statusCode; // number default: 401
+}
+```
+
 ## middlewares
 Um objeto que contém middlewares padrões no formato do express.
 
@@ -85,6 +96,15 @@ const handle404 = function (req, res, next) {
   next();
 };
 ```
+
+###### Formato da função:
+```js
+const validateAuth = function (req, res, next) {
+  // req: request
+  // res: response
+  // next: proxima função da stack
+  // Realiza a chamada da validação do JWT. Para isso é feito uma chamada http na API de acesso.
+};
 
 ###### Exemplo de uso:
 ```js

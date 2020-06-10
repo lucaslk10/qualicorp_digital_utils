@@ -1,8 +1,7 @@
-const handle404 = function (req, res, next) {
-  res.status("404").json({ status: 404, message: "URL não encontrada." });
-  next();
-};
+const { handle404 } = require("./handle404");
+const { validateAuth } = require("./validateAuth");
 
 module.exports = {
-  handle404
+  handle404,
+  validateAuth
 }
