@@ -13,8 +13,9 @@ exports.validateAuth = async function (req, res, next) {
     throw new AuthError("'auth' não foi preenchido.");
   }
 
+  let response = undefined;
   try {
-    const response = await axios.post(`${process.env.URL_TOKEN_VALIDAR}`, {}, { headers: { "auth": auth, "Content-Type": "application/json" } });
+    response = await axios.post(`${process.env.URL_TOKEN_VALIDAR}`, {}, { headers: { "auth": auth, "Content-Type": "application/json" } });
   } catch (error) {
     if (error.response &&
       error.response.data &&
@@ -25,7 +26,7 @@ exports.validateAuth = async function (req, res, next) {
   }
 
   if (response.data) {
-    req.user = response.data.user;
+    req.user = response.data.data;
     next();
   } else {
     throw new AppError("Retorno inexperado durante validateAuth")
