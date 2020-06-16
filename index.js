@@ -13,5 +13,5 @@ module.exports = {
   AuthError: AuthError,
   middlewares: middlewares,
   validations: validations,
-  conversions: conversions,
+  conversions: conversions
 }
