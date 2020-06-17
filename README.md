@@ -119,7 +119,8 @@ app.use(middlewares.handle404); // deve sempre estar após as rotas
 Contém diversos objetos que possuem funções para diversos gêneros de validações:<br>
 
 **1. dateValidations**
-- isValidFormat(data) 
+- isValidBRFormat(data) 
+- isValidUAFormat(data) 
 - isValidRange(dataInicio, dataFim)
 
 **2. documentsValidations**<br>
@@ -161,3 +162,6 @@ Contém diversos objetos que possuem funções para diversos gêneros de convers
 **4. number**
 - round(decimalValue, places = 2)
 - trunc(decimalValue, places = 2)
+
+**5. string**
+- getOnlyNumbers(str)
