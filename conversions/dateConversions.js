@@ -1,18 +1,23 @@
 const moment = require("moment");
+const AppError = require("../exceptions/AppError");
 
 module.exports = {
   formatBrasil(date) {
     return moment(date).format("DD/MM/YYYY");
   },
   formatEUA(value) {
-    let date = (typeof value === "string") ? new Date(value) : value;
+    if (!((typeof value === "string") || (typeof date.getMonth === "function"))) {
+      throw new AppError("Formato de Data inválido.")
+    }
 
-    return moment(date).format("YYYY-MM-DD");
+    return moment(value).format("YYYY-MM-DD");
   },
   formatEUAdateTime(value) {
-    let date = (typeof value === "string") ? new Date(value) : value;
+    if (!((typeof value === "string") || (typeof date.getMonth === "function"))) {
+      throw new AppError("Formato de Data inválido.")
+    }
 
-    return moment(date).format("YYYY-MM-DD HH:mm:SS");
+    return moment(value).format("YYYY-MM-DD HH:mm:SS");
   },
   clear(data, separator = "/") {
     return data.split(separator).join("");
