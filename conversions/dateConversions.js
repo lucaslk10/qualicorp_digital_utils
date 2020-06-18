@@ -4,7 +4,7 @@ module.exports = {
   formatBrasil(date) {
     return moment(date).format("DD/MM/YYYY");
   },
-  formatEUA() {
+  formatEUA(value) {
     let date = (typeof value === "string") ? new Date(value) : value;
 
     return moment(date).format("YYYY-MM-DD");
