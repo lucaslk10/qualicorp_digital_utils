@@ -146,6 +146,8 @@ Contém diversos objetos que possuem funções para diversos gêneros de convers
 
 **1. date**
 - formatBrasil(data)
+- formatEUA(value)
+- formatEUAdateTime(value)
 - clear(data, separator = "/")
 - reverse(data, separator = "/")
 - clearAndReverse(data, separator = "/")
