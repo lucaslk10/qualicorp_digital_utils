@@ -1,6 +1,6 @@
 {
   "name": "@qualicorp_digital/utils",
-  "version": "1.3.8",
+  "version": "1.3.9",
   "description": "Qualicorp Digital funções úteis",
   "main": "index.js",
   "scripts": {},
