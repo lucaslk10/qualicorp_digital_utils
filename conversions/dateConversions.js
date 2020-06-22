@@ -6,7 +6,7 @@ module.exports = {
     return moment(date).format("DD/MM/YYYY");
   },
   formatEUA(value) {
-    if (!((typeof value === "string") || (typeof date.getMonth === "function"))) {
+    if (!((typeof value === "string") || (typeof value.getMonth === "function"))) {
       throw new AppError("Formato de Data inválido.")
     }
 
