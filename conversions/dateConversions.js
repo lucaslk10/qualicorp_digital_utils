@@ -13,7 +13,7 @@ module.exports = {
     return moment(value).format("YYYY-MM-DD");
   },
   formatEUAdateTime(value) {
-    if (!((typeof value === "string") || (typeof date.getMonth === "function"))) {
+    if (!((typeof value === "string") || (typeof value.getMonth === "function"))) {
       throw new AppError("Formato de Data inválido.")
     }
 
