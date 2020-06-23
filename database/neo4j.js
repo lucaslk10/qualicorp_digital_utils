@@ -1,5 +1,5 @@
 const QNeo4j = require("@qualitech/qneo4j");
-const conversions = require("../conversions/dateConversions");
+const dateConversions = require("../conversions/dateConversions");
 const moment = require('moment');
 moment.locale("pt-br");
 
