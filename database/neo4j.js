@@ -26,8 +26,12 @@ const trataObject = function (object, dateFieldsName = []) {
       field = trataObject(field, dateFieldsName);
     } else {
       if (dateFieldsName.find(fieldName => fieldName.toUpperCase() === prop.toUpperCase())) {
+        try {
+          field = parseInt(field)
+        } catch (error) { }
+
         if (typeof field === "number") {
-          object[prop] = conversions.date.formatEUAdateTime(field)
+          object[prop] = dateConversions.formatEUAdateTime(field)
         }
       }
     }
