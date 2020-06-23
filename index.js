@@ -5,6 +5,7 @@ const AuthError = require("./Exceptions/AuthError");
 const middlewares = require("./middlewares");
 const validations = require("./validations");
 const conversions = require("./conversions");
+const database = require("./database");
 
 module.exports = {
   setupEnvironment: setupEnvironment,
@@ -14,4 +15,5 @@ module.exports = {
   middlewares: middlewares,
   validations: validations,
   conversions: conversions,
+  database: database
 }
