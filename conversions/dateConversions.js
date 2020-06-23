@@ -19,6 +19,13 @@ module.exports = {
 
     return moment(value).format("YYYY-MM-DD HH:mm:SS");
   },
+  formatTimestamp(value) {
+    if (!((typeof value === "string") || (typeof value === "number") || (typeof value.getMonth === "function"))) {
+      throw new AppError("Formato de Data inválido.")
+    }
+
+    return moment(value).toDate().getTime();
+  },
   clear(data, separator = "/") {
     return data.split(separator).join("");
   },
