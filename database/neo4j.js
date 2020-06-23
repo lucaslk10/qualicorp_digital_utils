@@ -1,4 +1,5 @@
 const QNeo4j = require("@qualitech/qneo4j");
+const conversions = require("../conversions/dateConversions");
 const moment = require('moment');
 moment.locale("pt-br");
 
@@ -26,7 +27,7 @@ const trataObject = function (object, dateFieldsName = []) {
     } else {
       if (dateFieldsName.find(fieldName => fieldName.toUpperCase() === prop.toUpperCase())) {
         if (typeof field === "number") {
-          object[prop] = moment(field).format("YYYY-MM-DD");
+          object[prop] = conversions.date.formatEUAdateTime(field)
         }
       }
     }
