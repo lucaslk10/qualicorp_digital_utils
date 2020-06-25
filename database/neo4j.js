@@ -14,16 +14,16 @@ const customExecute = async function (queryOpt, opts, dateFieldsName = [], flatS
   return response;
 }
 
-const trataObject = function (object, dateFieldsName = []) {
+const trataObject = function (object, dateFieldsName = [], dateFormat = "YYYY-MM-DD HH:mm:SS") {
   for (let prop in object) {
     let field = object[prop];
 
     if (Array.isArray(field)) {
       for (let x = 0; x <= field.length - 1; x++) {
-        field[x] = trataObject(field[x], dateFieldsName)
+        field[x] = trataObject(field[x], dateFieldsName, dateFormat)
       }
     } else if (typeof field === "object") {
-      field = trataObject(field, dateFieldsName);
+      field = trataObject(field, dateFieldsName, dateFormat);
     } else {
       if (dateFieldsName.find(fieldName => fieldName.toUpperCase() === prop.toUpperCase())) {
         try {
@@ -31,7 +31,7 @@ const trataObject = function (object, dateFieldsName = []) {
         } catch (error) { }
 
         if (typeof field === "number") {
-          object[prop] = dateConversions.formatEUAdateTime(field)
+          object[prop] = moment(field).format(dateFormat);
         }
       }
     }
@@ -39,9 +39,9 @@ const trataObject = function (object, dateFieldsName = []) {
   return object
 }
 
-const trataResult = function (value, dateFieldsName = []) {
+const trataResult = function (value, dateFieldsName = [], dateFormat = "YYYY-MM-DD HH:mm:SS") {
   if (Array.isArray(value)) {
-    return value.map(item => trataObject(item, dateFieldsName));
+    return value.map(item => trataObject(item, dateFieldsName, dateFormat));
   } else if (typeof value === "object") {
     return trataObject(value, dateFieldsName);
   } else {
