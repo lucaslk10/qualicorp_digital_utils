@@ -54,3 +54,4 @@ exports.getQNeo4jCustom = function (connection) {
   neo4jCustom.customExecute = customExecute;
   return neo4jCustom;
 }
+exports.trataResult = trataResult;
