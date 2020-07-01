@@ -3,9 +3,9 @@ const dateConversions = require("../conversions/dateConversions");
 const moment = require('moment');
 moment.locale("pt-br");
 
-const customExecute = async function (queryOpt, opts, dateFieldsName = [], flatSublevel = "") {
+const customExecute = async function (queryOpt, opts, dateFieldsName = [], flatSublevel = "", dateFormat = "YYYY-MM-DD HH:mm:SS") {
   let response = await this.execute(queryOpt, opts);
-  response = trataResult(response, dateFieldsName)
+  response = trataResult(response, dateFieldsName, dateFormat)
 
   if (flatSublevel) {
     response = response.map(item => item[flatSublevel]);
