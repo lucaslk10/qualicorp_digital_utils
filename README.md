@@ -149,6 +149,7 @@ Contém diversos objetos que possuem funções para diversos gêneros de convers
 - formatEUA(value)
 - formatEUAdateTime(value)
 - formatTimestamp(value)
+- getDiffBetweenDates(initialDate, finalDate)
 - clear(data, separator = "/")
 - reverse(data, separator = "/")
 - clearAndReverse(data, separator = "/")

@@ -26,6 +26,38 @@ module.exports = {
 
     return moment(value).toDate().getTime();
   },
+  getDiffBetweenDates(initialDate, finalDate) {
+    if (!((typeof initialDate === "string") || (typeof initialDate === "number") || (typeof initialDate.getMonth === "function"))) {
+      throw new AppError("Formato de Data inválido.")
+    }
+
+    if (!((typeof finalDate === "string") || (typeof finalDate === "number") || (typeof finalDate.getMonth === "function"))) {
+      throw new AppError("Formato de Data inválido.")
+    }
+
+    initialDate = moment(initialDate).getDate();
+    finalDate = moment(finalDate).getDate();
+
+    let delta = Math.abs(date_future - date_now) / 1000;
+
+    let days = Math.floor(delta / 86400);
+    delta -= days * 86400;
+
+    let hours = Math.floor(delta / 3600) % 24;
+    delta -= hours * 3600;
+
+    let minutes = Math.floor(delta / 60) % 60;
+    delta -= minutes * 60;
+
+    let seconds = delta % 60;
+
+    return {
+      days,
+      hours,
+      minutes,
+      seconds
+    }
+  },
   clear(data, separator = "/") {
     return data.split(separator).join("");
   },
