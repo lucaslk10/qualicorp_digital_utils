@@ -35,10 +35,10 @@ module.exports = {
       throw new AppError("Formato de Data inválido.")
     }
 
-    initialDate = moment(initialDate).getDate();
-    finalDate = moment(finalDate).getDate();
+    initialDate = moment(initialDate).toDate();
+    finalDate = moment(finalDate).toDate();
 
-    let delta = Math.abs(date_future - date_now) / 1000;
+    let delta = Math.abs(finalDate - initialDate) / 1000;
 
     let days = Math.floor(delta / 86400);
     delta -= days * 86400;
