@@ -99,6 +99,13 @@ const handle404 = function (req, res, next) {
 
 ###### Formato da função:
 ```js
+const handleError = async (error, req, res, _) => {
+
+}
+```
+
+###### Formato da função:
+```js
 const validateAuth = function (req, res, next) {
   // req: request
   // res: response
