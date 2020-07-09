@@ -9,7 +9,7 @@ exports.handleError = async (error, req, res, _) => {
   if ((typeof error == "object") && (error.constructor) && (error.constructor.name === "AuthError")) {
     responseError(res, msg, 401)
   } else
-    if (error instanceof AppError) {
+    if ((typeof error == "object") && (error.constructor) && (error.constructor.name === "AppError")) {
       responseError(res, msg, 400)
     } else {
       console.log(msg);
