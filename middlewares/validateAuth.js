@@ -19,8 +19,8 @@ exports.validateAuth = async function (req, res, next) {
   } catch (error) {
     if (error.response &&
       error.response.data &&
-      (error.response.data.message.toLowerCase() == "authorization has been denied for this request.") ||
-      (error.response.data.message.toLowerCase() == "recusado")) {
+      ((error.response.data.message.toLowerCase() == "authorization has been denied for this request.") ||
+        (error.response.data.message.toLowerCase() == "recusado"))) {
       throw new AuthError("'auth' inválido ou vencido.");
     }
     throw error;
