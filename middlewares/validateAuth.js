@@ -4,9 +4,9 @@ const axios = require("axios");
 
 exports.validateAuth = async function (req, res, next) {
   let { auth } = req.headers;
-  let { noauth } = req.body;
+  let { noauth = false } = req.body;
 
-  if (!!noauth) {
+  if (noauth) {
     next();
     return;
   }
