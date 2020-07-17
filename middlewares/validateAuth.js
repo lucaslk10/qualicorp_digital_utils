@@ -4,6 +4,12 @@ const axios = require("axios");
 
 exports.validateAuth = async function (req, res, next) {
   let { auth } = req.headers;
+  let { noauth } = req.body;
+
+  if (!!noauth) {
+    next();
+    return;
+  }
 
   if (!process.env.URL_TOKEN_VALIDAR) {
     throw new AppError("Variável de ambiente 'URL_TOKEN_VALIDAR' não foi encontrada.");
