@@ -58,6 +58,29 @@ module.exports = {
       seconds
     }
   },
+  getAge(birthDate, referenceDate = null) {
+    const hasTime = function (date) {
+      return /\d{2,4}.\d{2}.\d{2,4}\s?\d{1,2}.\d{1,2}.\d{1,2}/g.test(date);
+    };
+
+    if (!hasTime(birthDate)) {
+      birthDate += " 00:00:00";
+    }
+
+    if (referenceDate && !hasTime(referenceDate)) {
+      referenceDate += " 00:00:00";
+    }
+
+    const refDate = referenceDate !== null ? new Date(referenceDate) : new Date();
+    const birth = new Date(birthDate);
+    let age = refDate.getFullYear() - birth.getFullYear();
+    const diffMonths = refDate.getMonth() - birth.getMonth();
+
+    if ((diffMonths < 0) || (diffMonths === 0 && (refDate.getDate() < birth.getDate()))) {
+      age--;
+    }
+    return age;
+  },
   clear(data, separator = "/") {
     return data.split(separator).join("");
   },

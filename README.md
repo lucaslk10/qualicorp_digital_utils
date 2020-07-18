@@ -160,6 +160,7 @@ Contém diversos objetos que possuem funções para diversos gêneros de convers
 - clear(data, separator = "/")
 - reverse(data, separator = "/")
 - clearAndReverse(data, separator = "/")
+- getAge(birthDate, referenceDate)
 
 **2. inputs**<br>
 **2.1 query**
