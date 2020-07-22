@@ -9,10 +9,12 @@ exports.validateAuth = async function (req, res, next) {
     throw new AppError("Variável de ambiente 'URL_TOKEN_VALIDAR' não foi encontrada.");
   }
 
-  // Essa linha é válida, ela foi comentada provisoriamente
-  //if (!auth) {
-  //  throw new AuthError("'auth' não foi preenchido.");
-  //}
+  if (!auth) {
+    //Essa linha é válida, ela foi comentada provisoriamente
+    //throw new AuthError("'auth' não foi preenchido.");
+    next(); // Essa linha deverá ser retirada quando a linha de cima for descomentada
+    return; // Essa linha deverá ser retirada quando a linha de cima for descomentada
+  }
 
   let response = undefined;
   try {
@@ -22,10 +24,7 @@ exports.validateAuth = async function (req, res, next) {
       error.response.data &&
       ((error.response.data.message.toLowerCase() == "authorization has been denied for this request.") ||
         (error.response.data.message.toLowerCase() == "recusado"))) {
-      // Essa linha é válida, ela foi comentada provisoriamente
-      // throw new AuthError("'auth' inválido ou vencido.");
-      next(); // Essa linha deverá ser retirada quando a linha de cima for descomentada
-      return; // Essa linha deverá ser retirada quando a linha de cima for descomentada
+      throw new AuthError("'auth' inválido ou vencido.");
     }
     throw error;
   }
