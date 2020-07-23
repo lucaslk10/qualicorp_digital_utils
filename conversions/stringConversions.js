@@ -7,5 +7,11 @@ module.exports = {
     const ext = re.exec(fileName)[1];
 
     return (!!ext);
-  }
+  },
+  getFileExtension(fileName) {
+    const re = /(?:\.([^.]+))?$/;
+    const ext = re.exec(fileName)[1];
+
+    return (ext) ? ext : "";
+  },
 }
