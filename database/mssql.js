@@ -16,6 +16,7 @@ class Qmssql {
       parseJSON: true,
       options: {
         encrypt: true,
+        enableArithAbort: true,
         appName: appName
       }
     };
