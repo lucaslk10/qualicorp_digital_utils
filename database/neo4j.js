@@ -28,6 +28,9 @@ const trataObject = function (object, dateFieldsName = [], dateFormat = "YYYY-MM
       if (dateFieldsName.find(fieldName => fieldName.toUpperCase() === prop.toUpperCase())) {
         try {
           field = parseInt(field)
+          if (isNaN(field)) {
+            field = '';
+          }
         } catch (error) { }
 
         if (typeof field === "number") {
