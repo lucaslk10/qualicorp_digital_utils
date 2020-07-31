@@ -47,7 +47,7 @@ const trataObject = function (object, dateFieldsName = [], dateFormat = "YYYY-MM
 
 const trataResult = function (value, dateFieldsName = [], dateFormat = "YYYY-MM-DD HH:mm:SS", gmt = 'GMT-3') {
   if (Array.isArray(value)) {
-    return value.map(item => trataObject(item, dateFieldsName, dateFormat));
+    return value.map(item => trataObject(item, dateFieldsName, dateFormat, gmt));
   } else if (typeof value === "object") {
     return trataObject(value, dateFieldsName, dateFormat);
   } else {
