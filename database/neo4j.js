@@ -1,11 +1,10 @@
 const QNeo4j = require("@qualitech/qneo4j");
-const dateConversions = require("../conversions/dateConversions");
 const moment = require('moment');
 moment.locale("pt-br");
 
-const customExecute = async function (queryOpt, opts, dateFieldsName = [], flatSublevel = "", dateFormat = "YYYY-MM-DD HH:mm:SS") {
+const customExecute = async function (queryOpt, opts, dateFieldsName = [], flatSublevel = "", dateFormat = "YYYY-MM-DD HH:mm:SS", gmt = 'GMT-3') {
   let response = await this.execute(queryOpt, opts);
-  response = trataResult(response, dateFieldsName, dateFormat)
+  response = trataResult(response, dateFieldsName, dateFormat, gmt)
 
   if (flatSublevel) {
     response = response.map(item => item[flatSublevel]);
@@ -14,16 +13,16 @@ const customExecute = async function (queryOpt, opts, dateFieldsName = [], flatS
   return response;
 }
 
-const trataObject = function (object, dateFieldsName = [], dateFormat = "YYYY-MM-DD HH:mm:SS") {
+const trataObject = function (object, dateFieldsName = [], dateFormat = "YYYY-MM-DD HH:mm:SS", gmt = 'GMT-3') {
   for (let prop in object) {
     let field = object[prop];
 
     if (Array.isArray(field)) {
       for (let x = 0; x <= field.length - 1; x++) {
-        field[x] = trataObject(field[x], dateFieldsName, dateFormat)
+        field[x] = trataObject(field[x], dateFieldsName, dateFormat, gmt)
       }
     } else if (typeof field === "object") {
-      field = trataObject(field, dateFieldsName, dateFormat);
+      field = trataObject(field, dateFieldsName, dateFormat, gmt);
     } else {
       if (dateFieldsName.find(fieldName => fieldName.toUpperCase() === prop.toUpperCase())) {
         try {
@@ -34,7 +33,11 @@ const trataObject = function (object, dateFieldsName = [], dateFormat = "YYYY-MM
         } catch (error) { }
 
         if (typeof field === "number") {
-          object[prop] = moment(field).format(dateFormat);
+          if (gmt === 'GMT') {
+            object[prop] = moment.utc(field).format(dateFormat);
+          } else {
+            object[prop] = moment(field).format(dateFormat);
+          }
         }
       }
     }
@@ -42,7 +45,7 @@ const trataObject = function (object, dateFieldsName = [], dateFormat = "YYYY-MM
   return object
 }
 
-const trataResult = function (value, dateFieldsName = [], dateFormat = "YYYY-MM-DD HH:mm:SS") {
+const trataResult = function (value, dateFieldsName = [], dateFormat = "YYYY-MM-DD HH:mm:SS", gmt = 'GMT-3') {
   if (Array.isArray(value)) {
     return value.map(item => trataObject(item, dateFieldsName, dateFormat));
   } else if (typeof value === "object") {
