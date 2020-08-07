@@ -10,10 +10,12 @@ exports.validateAuth = async function (req, res, next) {
   }
 
   if (!auth) {
-    //Essa linha é válida, ela foi comentada provisoriamente
-    //throw new AuthError("'auth' não foi preenchido.");
-    next(); // Essa linha deverá ser retirada quando a linha de cima for descomentada
-    return; // Essa linha deverá ser retirada quando a linha de cima for descomentada
+    if (process.env.NODE_ENV !== undefined || process.env.NODE_ENV !== 'dev') {
+      next();
+      return;
+    } else {
+      throw new AuthError("'auth' não foi preenchido.");
+    }
   }
 
   let response = undefined;
