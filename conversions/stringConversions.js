@@ -19,6 +19,6 @@ module.exports = {
       throw new Error("value is not a string")
     }
 
-    value.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    return value.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
   }
 }

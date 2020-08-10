@@ -177,3 +177,6 @@ Contém diversos objetos que possuem funções para diversos gêneros de convers
 
 **5. string**
 - getOnlyNumbers(str)
+- hasFileExtension(filename)
+- getFileExtension(filename)
+- normalize(value)
