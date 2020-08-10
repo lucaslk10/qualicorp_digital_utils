@@ -14,4 +14,11 @@ module.exports = {
 
     return (ext) ? ext : "";
   },
+  normalize(value) {
+    if (typeof value !== "string") {
+      throw new Error("value is not a string")
+    }
+
+    value.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+  }
 }
