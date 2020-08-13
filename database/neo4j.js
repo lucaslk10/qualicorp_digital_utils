@@ -2,7 +2,7 @@ const QNeo4j = require("@qualitech/qneo4j");
 const moment = require('moment');
 moment.locale("pt-br");
 
-const customExecute = async function (queryOpt, opts, dateFieldsName = [], flatSublevel = "", dateFormat = "YYYY-MM-DD HH:mm:SS", gmt = 'GMT-3') {
+const customExecute = async function (queryOpt, opts, dateFieldsName = [], flatSublevel = "", dateFormat = "YYYY-MM-DD HH:mm:ss", gmt = 'GMT-3') {
   let response = await this.execute(queryOpt, opts);
   response = trataResult(response, dateFieldsName, dateFormat, gmt)
 
@@ -13,7 +13,7 @@ const customExecute = async function (queryOpt, opts, dateFieldsName = [], flatS
   return response;
 }
 
-const trataObject = function (object, dateFieldsName = [], dateFormat = "YYYY-MM-DD HH:mm:SS", gmt = 'GMT-3') {
+const trataObject = function (object, dateFieldsName = [], dateFormat = "YYYY-MM-DD HH:mm:ss", gmt = 'GMT-3') {
   for (let prop in object) {
     let field = object[prop];
 
@@ -45,7 +45,7 @@ const trataObject = function (object, dateFieldsName = [], dateFormat = "YYYY-MM
   return object
 }
 
-const trataResult = function (value, dateFieldsName = [], dateFormat = "YYYY-MM-DD HH:mm:SS", gmt = 'GMT-3') {
+const trataResult = function (value, dateFieldsName = [], dateFormat = "YYYY-MM-DD HH:mm:ss", gmt = 'GMT-3') {
   if (Array.isArray(value)) {
     return value.map(item => trataObject(item, dateFieldsName, dateFormat, gmt));
   } else if (typeof value === "object") {

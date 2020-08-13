@@ -17,7 +17,7 @@ module.exports = {
       throw new AppError("Formato de Data inválido.")
     }
 
-    return moment(value).format("YYYY-MM-DD HH:mm:SS");
+    return moment(value).format("YYYY-MM-DD HH:mm:ss");
   },
   formatTimestamp(value) {
     if (!((typeof value === "string") || (typeof value === "number") || (typeof value.getMonth === "function"))) {
