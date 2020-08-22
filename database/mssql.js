@@ -18,6 +18,9 @@ class Qmssql {
         encrypt: true,
         enableArithAbort: true,
         appName: appName
+      },
+      pool: {
+        idleTimeoutMillis: 60000
       }
     };
   }
