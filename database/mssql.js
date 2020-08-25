@@ -27,7 +27,7 @@ class Qmssql {
 
   async connect() {
     try {
-      this.db = await new mssql.ConnectionPool(this.config).connect();
+      this.db = await mssql.connect(this.config);
     } catch (error) {
       throw error;
     }
