@@ -59,6 +59,10 @@ module.exports = {
     }
   },
   getAge(birthDate, referenceDate = null) {
+    if (!birthDate) {
+      birthDate = moment().format("YYYY-MM-DD");
+    }
+
     const hasTime = function (date) {
       return /\d{2,4}.\d{2}.\d{2,4}\s?\d{1,2}.\d{1,2}.\d{1,2}/g.test(date);
     };
