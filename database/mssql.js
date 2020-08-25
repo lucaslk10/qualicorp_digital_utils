@@ -48,8 +48,6 @@ class Qmssql {
       return result.recordset;
     } catch (error) {
       throw error;
-    } finally {
-      if (this.db) await this.db.close();
     }
   }
 
