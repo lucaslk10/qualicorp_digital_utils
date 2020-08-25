@@ -64,8 +64,6 @@ class Qmssql {
       return result.rowsAffected[0] > 0;
     } catch (error) {
       throw error;
-    } finally {
-      if (this.db) await this.db.close();
     }
   }
 }
