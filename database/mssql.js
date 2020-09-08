@@ -26,22 +26,12 @@ class Qmssql {
     };
   }
 
-  async beginTransaction() {
-    await this.transaction.begin();
-  }
-
-  async commitTransaction() {
-    await this.transaction.commit();
-  }
-
-  async rollbackTransaction() {
-    await this.transaction.rollback();
-  }
-
   async connect() {
-    this.db = await mssql.connect(this.config);
-    this.transaction = new mssql.Transaction()
-    this.request = new mssql.Request(this.transaction);
+    try {
+      this.db = await mssql.connect(this.config);
+    } catch (error) {
+      throw error;
+    }
   }
 
   isConnected() {
@@ -50,8 +40,8 @@ class Qmssql {
 
   async query(sql, params = []) {
     try {
-      const request = this.request;
-
+      await this.connect();
+      const request = this.db.request();
       for (const p of params) {
         request.input(p.name, p.value);
       }
@@ -64,8 +54,8 @@ class Qmssql {
 
   async execute(statement, params = []) {
     try {
-      const request = this.request;
-
+      await this.connect();
+      const request = this.db.request();
       for (const p of params) {
         request.input(p.name, p.value);
       }
