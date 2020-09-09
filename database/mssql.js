@@ -1,11 +1,11 @@
 const mssql = require("mssql");
 
 class Qmssql {
-  static create({ user, password, server, port, database, appName }) {
-    return new Qmssql({ user, password, server, port, database, appName });
+  static create({ user, password, server, port, database, appName, timeout = 60000 }) {
+    return new Qmssql({ user, password, server, port, database, appName, timeout });
   }
 
-  constructor({ user, password, server, port, database, appName }) {
+  constructor({ user, password, server, port, database, appName, timeout = 60000 }) {
     this.db = undefined;
     this.config = {
       user: user,
@@ -20,9 +20,10 @@ class Qmssql {
         appName: appName
       },
       pool: {
-        idleTimeoutMillis: 60000
+        idleTimeoutMillis: timeout
       },
-      connectionTimeout: 60000
+      connectionTimeout: timeout,
+      requestTimeout: timeout,
     };
   }
 
