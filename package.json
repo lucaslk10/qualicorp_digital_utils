@@ -1,6 +1,6 @@
 {
   "name": "@qualicorp_digital/utils",
-  "version": "1.9.3",
+  "version": "1.10.0",
   "description": "Qualicorp Digital funções úteis",
   "main": "index.js",
   "scripts": {},
@@ -12,9 +12,13 @@
   "license": "ISC",
   "dependencies": {
     "@qualitech/qneo4j": "^4.0.0",
+    "app-root-path": "^3.0.0",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "moment": "^2.26.0",
-    "mssql": "^6.2.0"
+    "mssql": "^6.2.0",
+    "uuid": "^8.3.0",
+    "winston": "^3.3.3",
+    "winston-elasticsearch": "0.7.0"
   }
 }
