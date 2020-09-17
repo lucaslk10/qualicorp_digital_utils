@@ -2,9 +2,17 @@ const appRoot = require("app-root-path");
 const winston = require("winston");
 const ElasticsearchTransport = require("winston-elasticsearch");
 const os = require("os");
+const { Client } = require("@elastic/elasticsearch");
 
 class myLogger {
     constructor() {
+        this.client = new Client({
+            node: process.env.LOG_ES_HOST,
+            maxRetries: 5,
+            requestTimeout: 60000,
+            sniffOnStart: true,
+        });
+
         this.options = {
             file: {
                 level: "warn",
@@ -15,20 +23,20 @@ class myLogger {
                 maxFiles: 5,
                 colorize: false,
             },
-            console: {
-                level: "debug",
-                handleExceptions: true,
-                json: false,
-                colorize: true,
-            },
         };
 
         this.esTransportOpts = {
             level: "info",
             index: "logs",
             transformer: this.transformer,
+            client: this.client,
         };
 
+        this.logger = "";
+        this.esTransport = "";
+    }
+
+    setupLogger() {
         this.esTransport = new ElasticsearchTransport(this.esTransportOpts);
 
         this.logger = winston.createLogger({
@@ -48,6 +56,7 @@ class myLogger {
             console.error("Error caught 2 ", error);
         });
     }
+
     /** 
     @param {Object} logData
     @param {Object} logData.message - the log message
@@ -78,4 +87,9 @@ class myLogger {
     }
 }
 
-module.exports = new myLogger().logger;
+const loggerInstance = new myLogger();
+
+module.exports = {
+    setupLogger: loggerInstance.setupLogger.bind(loggerInstance),
+    myLogger: loggerInstance,
+};

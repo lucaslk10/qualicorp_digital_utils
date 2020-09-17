@@ -1,7 +1,8 @@
 const agentLogger = require("./agent-logger");
-const logger = require("./logger");
+const { setupLogger, myLogger } = require("./logger");
 
 module.exports = {
   agentLogger: agentLogger,
-  logger: logger
+  setupLogger,
+  logger: myLogger,
 }

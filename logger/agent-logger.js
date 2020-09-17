@@ -1,8 +1,8 @@
-const logger = require("./logger");
+const { myLogger } = require("./logger");
 const { v1 } = require("uuid");
 const { performance, PerformanceObserver } = require("perf_hooks");
 
-async function generateErrorLog(error, req, res) {
+async function generateLogError(error, req, res) {
     let duration = 0;
     const obs = new PerformanceObserver((items) => {
         duration = items.getEntries()[0].duration;
@@ -73,7 +73,7 @@ async function generateErrorLog(error, req, res) {
 
         objLog.duration = duration;
 
-        logger.error(msgLog, objLog);
+        myLogger.logger.error(msgLog, objLog);
         oldEnd.apply(res, restArgs);
     };
 }
@@ -129,7 +129,7 @@ async function generateLogInfo(req, res, next) {
 
             objLog.duration = duration;
 
-            logger.info("info", objLog);
+            myLogger.logger.info("info", objLog);
         }
 
         oldEnd.apply(res, restArgs);
@@ -138,4 +138,4 @@ async function generateLogInfo(req, res, next) {
     next();
 }
 
-module.exports = { generateErrorLog, generateLogInfo };
+module.exports = { generateLogError, generateLogInfo };
