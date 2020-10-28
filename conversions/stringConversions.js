@@ -20,5 +20,9 @@ module.exports = {
     }
 
     return value.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+  },
+  random(num) {
+    const chars = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+    return [...Array(num)].map(i => chars[Math.random() * chars.length | 0]).join``;
   }
 }
