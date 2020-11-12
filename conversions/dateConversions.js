@@ -3,28 +3,52 @@ const AppError = require("../exceptions/AppError");
 
 module.exports = {
   formatBrasil(date) {
-    return moment(date).format("DD/MM/YYYY");
+    const gmt = moment(date).format('YYYY-MM-DD HH:mm:ssZ').substring(19, 999);
+    const momentDate = moment(date);
+    if (gmt === '-02:00') {
+      momentDate.subtract(1, 'hours');
+    }
+
+    return momentDate.format("DD/MM/YYYY");
   },
   formatEUA(value) {
     if (!((typeof value === "string") || (typeof value === "number") || (typeof value.getMonth === "function"))) {
       throw new AppError("Formato de Data inválido.")
     }
 
-    return moment(value).format("YYYY-MM-DD");
+    const gmt = moment(value).format('YYYY-MM-DD HH:mm:ssZ').substring(19, 999);
+    const momentDate = moment(value);
+    if (gmt === '-02:00') {
+      momentDate.subtract(1, 'hours');
+    }
+
+    return momentDate.format("YYYY-MM-DD");
   },
   formatEUAdateTime(value) {
     if (!((typeof value === "string") || (typeof value === "number") || (typeof value.getMonth === "function"))) {
       throw new AppError("Formato de Data inválido.")
     }
 
-    return moment(value).format("YYYY-MM-DD HH:mm:ss");
+    const gmt = moment(value).format('YYYY-MM-DD HH:mm:ssZ').substring(19, 999);
+    const momentDate = moment(value);
+    if (gmt === '-02:00') {
+      momentDate.subtract(1, 'hours');
+    }
+
+    return momentDate.format("YYYY-MM-DD HH:mm:ss");
   },
   formatTimestamp(value) {
     if (!((typeof value === "string") || (typeof value === "number") || (typeof value.getMonth === "function"))) {
       throw new AppError("Formato de Data inválido.")
     }
 
-    return moment(value).toDate().getTime();
+    const gmt = moment(value).format('YYYY-MM-DD HH:mm:ssZ').substring(19, 999);
+    const momentDate = moment(value);
+    if (gmt === '-02:00') {
+      momentDate.subtract(1, 'hours');
+    }
+
+    return momentDate.toDate().getTime();
   },
   getDiffBetweenDates(initialDate, finalDate) {
     if (!((typeof initialDate === "string") || (typeof initialDate === "number") || (typeof initialDate.getMonth === "function"))) {
