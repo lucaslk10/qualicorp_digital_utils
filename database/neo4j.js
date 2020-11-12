@@ -38,6 +38,7 @@ const trataObject = function (object, dateFieldsName = [], dateFormat = "YYYY-MM
           } else {
             const gmt = moment(field).format('YYYY-MM-DD HH:mm:ssZ').substring(19, 999);
             const momentDate = moment(field);
+
             if (gmt === '-02:00') {
               momentDate.subtract(1, 'hours');
             }
