@@ -36,7 +36,13 @@ const trataObject = function (object, dateFieldsName = [], dateFormat = "YYYY-MM
           if (gmt === 'GMT') {
             object[prop] = moment.utc(field).format(dateFormat);
           } else {
-            object[prop] = moment(field).format(dateFormat);
+            const gmt = moment(field).format('YYYY-MM-DD HH:mm:ssZ').substring(19, 999);
+            const momentDate = moment(field);
+            if (gmt === '-02:00') {
+              momentDate.add(1, 'hours');
+            }
+
+            object[prop] = momentDate.format(dateFormat);
           }
         }
       }
