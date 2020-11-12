@@ -2,49 +2,49 @@ const moment = require("moment");
 const AppError = require("../exceptions/AppError");
 
 module.exports = {
-  formatBrasil(date) {
+  formatBrasil(date, ignoreGmt = false) {
     const gmt = moment(date).format('YYYY-MM-DD HH:mm:ssZ').substring(19, 999);
     const momentDate = moment(date);
-    if (gmt === '-02:00') {
+    if ((gmt === '-02:00') && (!ignoreGmt)) {
       momentDate.subtract(1, 'hours');
     }
 
     return momentDate.format("DD/MM/YYYY");
   },
-  formatEUA(value) {
+  formatEUA(value, ignoreGmt) {
     if (!((typeof value === "string") || (typeof value === "number") || (typeof value.getMonth === "function"))) {
       throw new AppError("Formato de Data inválido.")
     }
 
     const gmt = moment(value).format('YYYY-MM-DD HH:mm:ssZ').substring(19, 999);
     const momentDate = moment(value);
-    if (gmt === '-02:00') {
+    if ((gmt === '-02:00') && (!ignoreGmt)) {
       momentDate.subtract(1, 'hours');
     }
 
     return momentDate.format("YYYY-MM-DD");
   },
-  formatEUAdateTime(value) {
+  formatEUAdateTime(value, ignoreGmt) {
     if (!((typeof value === "string") || (typeof value === "number") || (typeof value.getMonth === "function"))) {
       throw new AppError("Formato de Data inválido.")
     }
 
     const gmt = moment(value).format('YYYY-MM-DD HH:mm:ssZ').substring(19, 999);
     const momentDate = moment(value);
-    if (gmt === '-02:00') {
+    if ((gmt === '-02:00') && (!ignoreGmt)) {
       momentDate.subtract(1, 'hours');
     }
 
     return momentDate.format("YYYY-MM-DD HH:mm:ss");
   },
-  formatTimestamp(value) {
+  formatTimestamp(value, ignoreGmt) {
     if (!((typeof value === "string") || (typeof value === "number") || (typeof value.getMonth === "function"))) {
       throw new AppError("Formato de Data inválido.")
     }
 
     const gmt = moment(value).format('YYYY-MM-DD HH:mm:ssZ').substring(19, 999);
     const momentDate = moment(value);
-    if (gmt === '-02:00') {
+    if ((gmt === '-02:00') && (!ignoreGmt)) {
       momentDate.subtract(1, 'hours');
     }
 
